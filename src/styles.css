@@ -1,0 +1,25 @@
+@import '~ngx-toastr/toastr';
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0;
+  font-family: "ITC Conduit",sans-serif;
+}
+
+th[mat-header-cell] div.mat-checkbox-frame {
+  border-color: #ffffff !important;
+}
+
+#theme-picker mat-card .mat-form-field-wrapper {
+  padding-top: 0px;
+}
+
