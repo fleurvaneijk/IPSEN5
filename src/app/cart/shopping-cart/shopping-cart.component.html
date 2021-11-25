@@ -1,0 +1,22 @@
+<div id="shopping-cart">
+  <!-- Title -->
+  <h1>Your Shopping Cart</h1>
+
+  <!------------------------ SHOW WHEN CART IS EMPTY -------------------------------->
+  <h2 [hidden]="cartService.cart.length != 0">Your cart is empty</h2>
+
+
+  <!--------------------- SHOW WHEN CART IS NOT EMPTY ------------------------------->
+  <!-- Product -->
+  <div *ngFor="let song of cartService.cart" id="item">
+    <app-cart-item [song]="song" id="cart-item"></app-cart-item>
+  </div>
+
+  <!-- Total -->
+  <label id="total" [hidden]="cartService.cart.length == 0">Total: {{ totalPrice | currency: '$' }}</label>
+
+  <!-- Checkout button -->
+  <button [hidden]="cartService.cart.length == 0" class="mat-button" id="checkout" (click)="handlePayment()">Check out with CreditCard</button>
+
+</div>
+

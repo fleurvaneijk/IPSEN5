@@ -1,0 +1,38 @@
+<div id="register-content">
+  <svg preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" width="1000" height="1000" viewBox="0 0 1000 1000"
+       id="register-background">
+    <polygon points="0,0 1000,0 0,1000" style="fill:black;"></polygon>
+  </svg>
+
+  <mat-card id="register-card">
+    <h2 mat-card-title>Register</h2>
+
+    <mat-form-field appearance="standard">
+      <input matInput type="text" placeholder="Full name" name="Name" [formControl]="userFullName">
+      <mat-error *ngIf="userFullName.invalid">{{getFormError(userFullName)}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <input matInput type="email" placeholder="E-mail" name="Email" [formControl]="userEmail">
+      <mat-error *ngIf="userEmail.invalid">{{getFormError(userEmail)}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <input matInput [type]="hide[0] ? 'password' : 'text'" placeholder="Password" name="Password"
+             [formControl]="userPass">
+      <mat-icon matSuffix (click)="hide[0] = !hide[0]" style="cursor:pointer">{{hide[0] ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="userPass.invalid">{{getFormError(userPass)}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="standard">
+      <input matInput [type]="hide[1] ? 'password' : 'text'" placeholder="Password confirm" name="Password confirm"
+             [formControl]="userPassConfirm">
+      <mat-icon matSuffix (click)="hide[1] = !hide[1]" style="cursor:pointer">{{hide[1] ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-error *ngIf="userPassConfirm.invalid">{{getFormError(userPassConfirm)}}</mat-error>
+    </mat-form-field>
+
+    <div id="register-btn-container">
+      <button mat-raised-button color="primary" (click)="register()" [disabled]="buttonDisabled">Register</button>
+    </div>
+  </mat-card>
+</div>

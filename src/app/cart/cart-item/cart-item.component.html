@@ -1,0 +1,11 @@
+<ul id="item">
+  <li (click)="deleteItem()" id="deletebtn" type="button">
+    <i class="material-icons">delete</i>
+  </li>
+  <li><img id="image" [src]=song.image alt="song image"/></li>
+  <li id="title">{{ song.title }}</li>
+  <li id="artist">{{ song.artist }}</li>
+  <li id="price">{{ song.price | currency: '$' }}</li>
+</ul>
+
+
