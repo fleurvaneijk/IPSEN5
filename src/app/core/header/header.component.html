@@ -1,0 +1,43 @@
+<mat-toolbar id="header-bar">
+  <mat-toolbar-row id="header-row-logo" (click)="router.navigate([''])">
+    <img alt="Don Diablo logo" src="../../../assets/img/dondiablo_logo.png">
+  </mat-toolbar-row>
+  <mat-toolbar-row id="header-row-nav" *ngIf="curUser">
+
+    <div class="burger" (click)="navSlide()">
+      <div class="line1"></div>
+      <div class="line2"></div>
+      <div class="line3"></div>
+    </div>
+
+    <ul class="nav-list">
+      <li [routerLink]="['catalog']" routerLinkActive="nav-active-link">
+        <div class="nav-content">Music List</div>
+      </li>
+      <li [routerLink]="['profile']" routerLinkActive="nav-active-link">
+        <div class="nav-content">Account</div>
+      </li>
+      <li [routerLink]="['music']" *ngIf="curUser ? curUser.role==='Admin' : false"
+          routerLinkActive="nav-active-link">
+        <div class="nav-content">Music List</div>
+      </li>
+      <li [routerLink]="['users']" *ngIf="curUser ? curUser.role==='Admin' : false"
+          routerLinkActive="nav-active-link">
+        <div class="nav-content">Users</div>
+      </li>
+      <li [routerLink]="['invites']" *ngIf="curUser ? curUser.role==='Admin' : false"
+          routerLinkActive="nav-active-link">
+        <div class="nav-content">Invite links</div>
+      </li>
+      <li id="nav-content-card" [routerLink]="['cart']" *ngIf="curUser ? curUser.role!=='Admin' : false"
+          routerLinkActive="nav-active-link">
+        <i class="material-icons nav-content">shopping_cart</i>
+      </li>
+      <li class="fill" *ngIf="curUser ? curUser.role ==='Admin' : false" style="visibility: hidden">Fill</li>
+      <li [routerLink]="['login']" (click)="logOut()"
+          [ngStyle]="{'margin-left': curUser ? curUser.role==='Admin' ? 'auto': '0px' : '0px'}">
+        <div class="nav-content">Logout</div>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>
